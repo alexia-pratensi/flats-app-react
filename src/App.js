@@ -1,25 +1,42 @@
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Flat from './components/flat';
+import flats from './flats';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      // flats: []
+    }
+  }
+
+  flats = (props) => {
+    return (
+      props.flats.map(({name, imageUrl, price, priceCurrency}) => {
+        return <Flat name={flats.name} imageUrl={imageUrl} price={price} priceCurrency={priceCurrency} />
+      }
+      )
+    )
+  }
+
+  render () {
+    return (
+      <div className="App">
+        <div className="left-scene">
+          <Flat flats/>
+        </div>
+        <div className="right-scene">
+
+        </div>
+      </div>
+    );
+
+  }
 }
+
+
 
 export default App;
